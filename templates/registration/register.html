@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center items-center min-h-screen">
+
+<div class="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md">
+
+<h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">
+
+Create Account
+
+</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {% if form.errors %}
+        <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded mb-4">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <button
+        type="submit"
+        class="w-full bg-indigo-600 text-white py-3 rounded-lg mt-4 hover:bg-indigo-700">
+
+        Register
+
+    </button>
+
+</form>
+
+<p class="text-center mt-4">
+
+Already have an account?
+
+<a
+href="{% url 'login' %}"
+class="text-indigo-600">
+
+Login
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+{% endblock %}

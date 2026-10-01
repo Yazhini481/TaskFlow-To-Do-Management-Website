@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Task
+{% endblock %}
+
+{% block content %}
+
+<div class="max-w-3xl mx-auto">
+
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+
+        <h1 class="text-3xl font-bold text-indigo-600 mb-6">
+
+            Edit Task
+
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="space-y-5">
+
+                {% for field in form %}
+
+                    <div>
+
+                        <label class="block mb-2 font-semibold">
+
+                            {{ field.label }}
+
+                        </label>
+
+                        {{ field }}
+
+                        {% if field.errors %}
+
+                            <p class="text-red-500 text-sm">
+
+                                {{ field.errors }}
+
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="flex gap-4 mt-8">
+
+                <button
+                    type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg">
+
+                    Update Task
+
+                </button>
+
+                <a href="{% url 'home' %}"
+                   class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
